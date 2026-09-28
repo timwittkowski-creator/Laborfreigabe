@@ -17,14 +17,25 @@ function updateProgress() {
   document.querySelector("#progress").value = digits.length;
   document.querySelector("#progressText").textContent = `${digits.length} von ${data.stations.length} Stationen gelöst`;
   const list = document.querySelector("#digits"); list.replaceChildren();
-  data.stations.forEach((s, i) => list.append(el("li", `Station ${i + 1}: ${digits[i] || "noch verschlossen"}`)));
+  data.stations.forEach((s, i) => {
+    const item = el("li");
+    if (i < digits.length) {
+      const review = el("details");
+      review.append(el("summary", `Station ${i + 1}: ${digits[i]} – nachlesen`));
+      review.append(el("p", s.title), el("p", s.source), el("p", s.material));
+      s.fields.forEach(field => review.append(el("p", `${field.label}: ${field.answers[0]}`)));
+      review.append(el("p", s.explanation), el("p", "Kurz besprechen: " + s.reflection));
+      item.append(review);
+    } else item.textContent = `Station ${i + 1}: noch verschlossen`;
+    list.append(item);
+  });
 }
 function render(focus = true) {
   room.replaceChildren(); updateProgress();
   if (current === data.stations.length) { finish(focus); return; }
   const s = data.stations[current];
   const h = heading(s.title);
-  if (s.image) { const img = el("img"); img.src = s.image; img.alt = s.imageAlt || ""; img.className = s.imageClass || "symbol"; room.append(img); }
+  if (s.image) { const img = el("img"); img.src = s.image; img.alt = s.imageAlt || ""; img.className = s.imageClass || "symbol"; img.width = 1536; img.height = 1024; img.decoding = "async"; room.append(img); }
   if (s.source) room.append(el("p", s.source, "source"));
   room.append(el("p", s.material, "reading"));
   if (s.link) {
@@ -39,10 +50,11 @@ function render(focus = true) {
   s.fields.forEach((item, i) => {
     const label = el("label", item.label); const input = el("input");
     input.type = "text"; input.id = `answer-${i}`; input.required = true;
-    input.autocomplete = "off"; input.spellcheck = false; label.htmlFor = input.id;
+    input.autocomplete = "off"; input.spellcheck = false; input.setAttribute("aria-describedby", "answerHelp feedback"); label.htmlFor = input.id;
     field.append(label, input); inputs.push(input);
   });
-  field.append(el("p", "Groß-/Kleinschreibung, Leerzeichen und Bindestriche sind egal. Gebt die gesuchten Begriffe oder Codes ein, keine ganzen Sätze.", "source"));
+  const answerHelp = el("p", "Groß-/Kleinschreibung, Leerzeichen und Bindestriche sind egal. Gebt die gesuchten Begriffe oder Codes ein, keine ganzen Sätze.", "source");
+  answerHelp.id = "answerHelp"; field.append(answerHelp);
   const check = el("button", "Akte entschlüsseln"); check.type = "submit";
   form.append(field, check); room.append(form);
   const help = el("details"); help.append(el("summary", "Hinweis 1: Wo finde ich die Information?"), el("p", s.hints[0]));
@@ -75,17 +87,23 @@ function finish(focus) {
   const form = el("form"); const label = el("label", "Euer Abschlusscode"); label.htmlFor = "code";
   const input = el("input"); input.id = "code"; input.type = "text"; input.inputMode = "numeric"; input.required = true; input.autocomplete = "off";
   const button = el("button", "Fach öffnen"); button.type = "submit";
-  const feedback = el("p"); feedback.setAttribute("role", "status");
-  form.append(label, input, button); room.append(form, feedback);
+  const feedback = el("p"); feedback.id = "finalFeedback"; feedback.setAttribute("role", "status");
+  const codeHelp = el("p", "Leerzeichen und Bindestriche sind erlaubt.", "source"); codeHelp.id = "codeHelp";
+  input.setAttribute("aria-describedby", "codeHelp finalFeedback");
+  form.append(label, input, codeHelp, button); room.append(form, feedback);
   form.onsubmit = event => {
     event.preventDefault();
-    if (input.value.trim() !== data.stations.map(s => s.digit).join("")) { feedback.textContent = "Das Fach bleibt zu. Prüft Ziffern und Reihenfolge auf eurem Codezettel."; return; }
+    if (input.disabled) return;
+    if (!matchesFinalCode(input.value, data.stations)) { input.setAttribute("aria-invalid", "true"); feedback.textContent = "Das Fach bleibt zu. Prüft Ziffern und Reihenfolge auf eurem Codezettel. Leerzeichen und Bindestriche sind erlaubt."; input.focus(); return; }
+    input.removeAttribute("aria-invalid");
     const trophy = el("img"); trophy.src = "assets/mission-geschafft.png";
     trophy.alt = "Geöffnete Spielkiste mit goldenen Spielmarken: Die Mission ist geschafft.";
+    trophy.width = 1536; trophy.height = 1024; trophy.decoding = "async";
     trophy.className = "finale-art"; room.append(trophy);
     feedback.className = "success";
     feedback.textContent = "Geheimakte geöffnet – Mission geschafft! Ihr habt recherchiert, kombiniert und als Team zehn Akten gelöst. Nennt gemeinsam drei Sicherheitsregeln und erklärt ein Gefahrstoffpiktogramm. Für echte Versuche braucht ihr weiterhin die Freigabe eurer Lehrkraft.";
     input.disabled = true; button.disabled = true;
+    feedback.tabIndex = -1; feedback.focus();
   };
   if (focus) h.focus();
 }

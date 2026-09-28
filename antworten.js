@@ -11,11 +11,18 @@ function matchesAnswer(value, accepted) {
 }
 if (typeof module !== "undefined") module.exports = { normalizeAnswer, matchesAnswer };
 
+function normalizeCode(value) {
+  return String(value).normalize("NFKC").replace(/[\s\-–—]/g, "");
+}
+function matchesFinalCode(value, stations) {
+  return resumeIndex(value, stations) === stations.length;
+}
+
 // Return the number of completed stations, or null for an invalid prefix.
 function resumeIndex(value, stations) {
-  const code = String(value).replace(/[\s\-–—]/g, "");
+  const code = normalizeCode(value);
   const fullCode = stations.map(s => s.digit).join("");
   if (!/^\d+$/.test(code) || code.length > stations.length || !fullCode.startsWith(code)) return null;
   return code.length;
 }
-if (typeof module !== "undefined") module.exports.resumeIndex = resumeIndex;
+if (typeof module !== "undefined") Object.assign(module.exports, { normalizeCode, resumeIndex, matchesFinalCode });
