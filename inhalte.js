@@ -233,7 +233,8 @@ window.ESCAPE = {
           "label": "Entnommene Chemikalien können … sein. (ein Wort)",
           "answers": [
             "verunreinigt",
-            "verschmutzt"
+            "verschmutzt",
+            "kontaminiert"
           ]
         }
       ],
@@ -249,7 +250,7 @@ window.ESCAPE = {
     {
       "title": "07 · Hersteller-Recherche",
       "source": "Buch: S. 14–15 zum Vergleichen; Hersteller-Sicherheitsdatenblatt, Abschnitt 2.2.",
-      "material": "Recherchiert „Carl Roth 6752 2-Propanol Sicherheitsdatenblatt“. Prüft den Produktnamen und die Konzentration: ROTIPURAN, mindestens 99,8 %, Artikelnummer 6752. Nutzt Abschnitt 2.2 zur vollständigen Kennzeichnung. Schreibt Produktname, Konzentration, URL, Dokumentdatum und Abrufdatum auf Papier. Findet dann die folgenden Angaben. Vergleicht das Ergebnis mit dem Buchbeispiel: Was stimmt überein? Keine Stoffe beschaffen oder ausprobieren.",
+      "material": "Recherchiert „Carl Roth 6752 2-Propanol Sicherheitsdatenblatt“. Prüft den Produktnamen und die Konzentration: ROTIPURAN, mindestens 99,8 %, Artikelnummer 6752. Öffnet auf der Produktseite „Downloads / SDB“ und wählt das Sicherheitsdatenblatt für Deutschland auf Deutsch. Falls der Produktlink ausfällt, sucht auf der Herstellerseite nach Artikel 6752. Nutzt Abschnitt 2.2 zur vollständigen Kennzeichnung. Schreibt Produktname, Konzentration, URL, Dokumentdatum und Abrufdatum auf Papier. Findet dann die folgenden Angaben. Vergleicht das Ergebnis mit dem Buchbeispiel: Was stimmt überein? Keine Stoffe beschaffen oder ausprobieren.",
       "question": "Tragt eure ermittelten Antworten ein.",
       "fields": [
         {
@@ -286,9 +287,9 @@ window.ESCAPE = {
       "explanation": "Für dieses Produkt passen GHS02, GHS07, Gefahr und H336. Die Eingaben prüfen die Angaben; ob eure Quelle und Begründung überzeugen, besprecht ihr gemeinsam.",
       "reflection": "Zusatzrecherche: Wählt ein Haushaltsprodukt mit einem anderen Piktogramm aus. Findet das Sicherheitsdatenblatt auf der Herstellerseite, dokumentiert Produkt und Version und erklärt eine Gefahr sowie eine passende Schutzmaßnahme. Diese offene Aufgabe beurteilt die Lehrkraft.",
       "digit": "8",
-      "link": "https://www.carlroth.com/downloads/sdb/de/6/SDB_6752_DE_DE.pdf",
-      "linkLabel": "Herstellerquelle öffnen: Sicherheitsdatenblatt 2-Propanol (PDF, neuer Tab)",
-      "fallback": "Ohne Internet: Für Carl Roth 6752, 2-Propanol ≥99,8 %, nennt Abschnitt 2.2 die Piktogramme GHS02 und GHS07 sowie das Signalwort Gefahr. Genannt werden Entzündbarkeit, Augenreizung und mögliche Benommenheit; Zündquellen sind fernzuhalten. Diese eigene Zusammenfassung ersetzt nur die Recherche im Lernspiel, kein Sicherheitsdatenblatt. Quellenprüfung: 12.09.2026.",
+      "link": "https://www.carlroth.com/de/de/alkohole/2-propanol/p/6752.1",
+      "linkLabel": "Herstellerquelle öffnen: Artikel 6752, Downloads / SDB (neuer Tab)",
+      "fallback": "Ohne Internet: Für Carl Roth 6752, 2-Propanol ≥99,8 %, nennt Abschnitt 2.2 die Piktogramme GHS02 und GHS07 sowie das Signalwort Gefahr. H225 bedeutet: Flüssigkeit und Dampf leicht entzündbar. H319 bedeutet: Verursacht schwere Augenreizung. H336 bedeutet: Kann Schläfrigkeit und Benommenheit verursachen. P210 fordert das Fernhalten von Zündquellen. Diese eigene Zusammenfassung ersetzt nur die Recherche im Lernspiel, kein Sicherheitsdatenblatt. Grundlage der Ersatzkarte: deutsches Hersteller-Sicherheitsdatenblatt, Version 7.1 de, überarbeitet am 09.10.2024, Abschnitt 2.2; abgerufen am 28.09.2026. Bei Nutzung dieser Karte notiert ihr „Ersatzkarte“ statt eines selbst geprüften PDF-Datums.",
       "success": "Recherche geschafft. Eure Belege zählen!",
       "image": "assets/rechercheteam.png",
       "imageAlt": "Illustriertes Team bei der Internetrecherche.",
@@ -307,7 +308,7 @@ window.ESCAPE = {
           ]
         },
         {
-          "label": "Englische Langform: Globally … System. Welches Wort fehlt?",
+          "label": "Englische Langform: Globally … System of Classification and Labelling of Chemicals. Welches Wort fehlt?",
           "answers": [
             "Harmonized",
             "Harmonised"
@@ -330,7 +331,7 @@ window.ESCAPE = {
         "Sucht in den Abschnitten zum globalen System und zu den Signalwörtern.",
         "Die englische Langform steht im Text; die zwei deutschen Wörter stehen in Anführungszeichen."
       ],
-      "explanation": "GHS steht für Globally Harmonized System. Gefahr kennzeichnet schwerwiegendere Gefahren als Achtung. Das Signalwort hängt von der Einstufung ab. In der EU wird GHS insbesondere durch die CLP-Verordnung umgesetzt.",
+      "explanation": "GHS steht für Globally Harmonized System of Classification and Labelling of Chemicals. Gefahr kennzeichnet schwerwiegendere Gefahren als Achtung. Das Signalwort hängt von der Einstufung ab. In der EU wird GHS insbesondere durch die CLP-Verordnung umgesetzt.",
       "reflection": "Euer Team hat kein gemeinsames Sprachwissen: Was können Bilder leisten, und wofür braucht ihr zusätzlich verständliche Texte?",
       "digit": "5",
       "success": "Nachricht entschlüsselt. Das Weltlabor sagt Danke!"

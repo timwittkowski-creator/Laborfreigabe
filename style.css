@@ -6,3 +6,7 @@ input[aria-invalid="true"]{border-color:#a12b28;background:#fff5f3}fieldset>labe
 .header-inner{grid-template-columns:minmax(0,1fr) 310px}.team-art{width:100%;height:auto;display:block;border-radius:8px;margin-bottom:18px}.mission-label strong{font-size:21px}.finale-art{display:block;width:100%;height:auto;border-radius:12px;margin-top:24px}aside.card{position:static}@media(max-width:760px){.header-inner{grid-template-columns:1fr}.mission-label{display:block;padding:12px;background:transparent;border:0}.team-art{max-width:440px;margin:0 auto;border-radius:12px}.mission-label>span,.mission-label>strong,.mission-label>p,.mission-label>.stripe{display:none}}
 
 .resume-panel{background:#fff7db;color:#233544;border:1px solid #dfc56b;border-radius:12px;padding:18px 22px;margin:0 0 24px}.resume-panel summary{font-size:18px}.resume-panel input{max-width:420px}#resumeHelp,#resumeFeedback{font-size:15px}.welcome-art{display:block;width:100%;max-width:450px;height:auto;border-radius:14px;margin:22px 0}.station-art{display:block;width:100%;height:auto;border-radius:12px;margin:0 0 24px}#room{scroll-margin-top:20px}
+
+/* Reserve illustration space while local images load. */
+.welcome-art,.station-art,.finale-art{aspect-ratio:3/2;object-fit:contain}
+aside details p{font-size:16px;overflow-wrap:anywhere}a:focus-visible,.success:focus-visible{outline:3px solid #e2990c;outline-offset:4px}
