@@ -145,13 +145,17 @@ window.ESCAPE = {
         {
           "label": "Name des Piktogramms links",
           "answers": [
-            "Flamme"
+            "Flamme",
+            "GHS02",
+            "GHS2"
           ]
         },
         {
           "label": "Name des Piktogramms rechts",
           "answers": [
-            "Ausrufezeichen"
+            "Ausrufezeichen",
+            "GHS07",
+            "GHS7"
           ]
         }
       ],
