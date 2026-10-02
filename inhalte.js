@@ -17,10 +17,16 @@ window.ESCAPE = {
           ]
         },
         {
-          "label": "Was muss sie mit ihren langen Haaren tun? (ein Verb)",
+          "label": "Was muss sie mit ihren langen Haaren tun?",
           "answers": [
             "zusammenbinden",
-            "binden"
+            "binden",
+            "zubinden",
+            "zurückbinden",
+            "hochbinden",
+            "zusammenmachen",
+            "einen Zopf machen",
+            "zu einem Zopf binden"
           ]
         },
         {
