@@ -147,7 +147,8 @@ window.ESCAPE = {
           "answers": [
             "Flamme",
             "GHS02",
-            "GHS2"
+            "GHS2",
+            "entzündlich"
           ]
         },
         {
@@ -155,7 +156,8 @@ window.ESCAPE = {
           "answers": [
             "Ausrufezeichen",
             "GHS07",
-            "GHS7"
+            "GHS7",
+            "Achtung"
           ]
         }
       ],
